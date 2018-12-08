@@ -8,10 +8,10 @@
 var { numNights, costCotty, costFood } = require("../data/data");
 
 var pricePerPerson = function(data, price, event) {
-	var finalCost = {};
-	var dataArr = Object.values(data);
 	var twoNights = 0;
 	var oneNight = 0
+	var finalCost = {};
+	var dataArr = Object.values(data);
 	// head count for two nights
 	for (var i = 0; i < dataArr.length; i++) {
 		if (dataArr[i] === 2) {
@@ -25,21 +25,14 @@ var pricePerPerson = function(data, price, event) {
 	var nightTwo = (price / 2) / twoNights;
 	// append final cost per person
 	for (person in data) {
-		// add event manually to finalCost obj below
+		// add event manually to finalCost[person] obj below
 		finalCost[person] = {"numNights": data[person], "paymentStatus": false, "cottage": 0, "food": 0};
 		if (data[person] === 1) {
-			finalCost[person][event] = `$${Math.ceil(nightOne)}`;
+			finalCost[person][event] = Math.ceil(nightOne)
 		} else if (data[person] === 2) {
-			finalCost[person][event] = `$${Math.ceil(nightTwo + nightOne)}`;
+			finalCost[person][event] = Math.ceil(nightTwo + nightOne)
 		}
 	}
-
-	//// check sum
-	// var total = 0
-	// for (event in finalCost) {
-	// 	total += finalCost[event]
-	// }
-	// console.log(total)
 	return finalCost;
 }
 

@@ -6,13 +6,21 @@ let { pricePerPerson }= require("./scripts/price_per_person");
 let PORT = process.env.PORT || 8080;
 const app = express();
 
+var calcSum = function(costs, event) {
+	total = 0
+	for (person in costs) {
+		total += costs[person][event];
+	}
+	return total;
+}
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 app.get("/", (req, res) => {
-	console.log(numNights)
 	let price = pricePerPerson(numNights, costCotty, "cottage");
-	let templateVars = { price };
+	var sum = calcSum(price, "cottage")
+	let templateVars = { price, costCotty, sum };
 	res.render("index", templateVars);
 });
 
