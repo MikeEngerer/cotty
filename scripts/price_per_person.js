@@ -11,14 +11,17 @@ var pricePerPerson = function(data, price, event) {
 	var finalCost = {};
 	var dataArr = Object.values(data);
 	var twoNights = 0;
+	var oneNight = 0
 	// head count for two nights
 	for (var i = 0; i < dataArr.length; i++) {
 		if (dataArr[i] === 2) {
 			twoNights += 1
+		} if (dataArr[i] === 1) {
+			oneNight += 1
 		}
 	};
 	// cost ( price / # people)
-	var nightOne = (price / 2) / Object.keys(data).length;
+	var nightOne = (price / 2) / (oneNight + twoNights);
 	var nightTwo = (price / 2) / twoNights;
 	// append final cost per person
 	for (person in data) {

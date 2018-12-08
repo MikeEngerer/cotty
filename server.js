@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 app.get("/", (req, res) => {
+	console.log(numNights)
 	let price = pricePerPerson(numNights, costCotty, "cottage");
 	let templateVars = { price };
 	res.render("index", templateVars);
