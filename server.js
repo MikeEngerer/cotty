@@ -3,7 +3,7 @@ let bodyParser = require("body-parser");
 let { numNights, paymentStatus, costCotty, costFood } = require("./data/data");
 let { pricePerPerson }= require("./scripts/price_per_person");
 
-let PORT = 8080;
+let PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
