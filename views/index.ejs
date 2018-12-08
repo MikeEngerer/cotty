@@ -40,14 +40,14 @@
 
 		<% for (person in price) { %>
 		<tr>
-			<td style="background-color: lightgrey"><%= person.toUpperCase() %></td>
+			<td name="name"style="background-color: lightgrey"><%= person.toUpperCase() %></td>
 			<td>
 				<%= price[person]["numNights"] %>
 				<form method="POST" action="/">
 					<input type="radio" name="nights" value="0"> 0
 					<input type="radio" name="nights" value="1"> 1
 					<input type="radio" name="nights" value="2"> 2
-					<input type="submit" value="Change">
+					<input type="submit" name="<%= person %>" value="Change">
 				</form>
 			</td>
 			<td>
