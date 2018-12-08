@@ -23,7 +23,7 @@ var pricePerPerson = function(data, price, event) {
 	// append final cost per person
 	for (person in data) {
 		// add event manually to finalCost obj below
-		finalCost[person] = {"numNights": data[person], "paymentStatus": false, 	"cottage": 0, "food": 0};
+		finalCost[person] = {"numNights": data[person], "paymentStatus": false, "cottage": 0, "food": 0};
 		if (data[person] === 1) {
 			finalCost[person][event] = `$${Math.ceil(nightOne)}`;
 		} else if (data[person] === 2) {
