@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cotty costs!</title>
+	<style>
+		table {
+			width: 100%;
+		}
+		th {
+			border: 1px solid black;
+			border-collapse: collapse;
+			width: 10%;
+			text-align: center;
+			background-color: lightgrey;
+		}
+		td {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+		    width: 5%;
+		    text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<caption style="
+			width: 100%;
+			height: 10%; 
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+			background-color: lightgrey;
+			">COSTS AND PAYMENT STATUS</caption>
+		<tr>
+			<th>NAME</th>
+			<th># OF NIGHTS</th>
+			<th>COTTY COST</th>
+			<th>FOOD COST</th>
+		</tr>
+
+		<% for (person in price) { %>
+		<tr>
+			<td style="background-color: lightgrey"><%= person.toUpperCase() %></td>
+			<td>
+				<%= price[person]["numNights"] %>
+				<form method="POST" action="/">
+					<input type="radio" name="nights" value="0"> 0
+					<input type="radio" name="nights" value="1"> 1
+					<input type="radio" name="nights" value="2"> 2
+					<input type="submit" value="Change">
+				</form>
+			</td>
+			<td>
+				<%= price[person]["cottage"] %>
+				<form method="POST" action="/"> Paid?
+					<input type="radio" name="payment" value="ye">Ye
+					<input type="radio" name="payment" value="naw">Naw
+				</form>
+			</td>
+			<td>
+				<%= price[person]["food"] %>
+				<form method="POST" action="/"> Paid?
+					<input type="radio" name="payment" value="ye">Ye
+					<input type="radio" name="payment" value="naw">Naw
+				</form>
+			</td>
+		</tr>
+		<% } %>
+	</table>
+</body>
+</html>
